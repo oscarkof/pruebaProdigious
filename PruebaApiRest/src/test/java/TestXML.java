@@ -32,6 +32,8 @@ public class TestXML {
                 System.out.println(festivity);
             }
 
+            //org.hibernate.cfg.Mappings
+            
         } catch (JAXBException e) {
             e.printStackTrace();
         }

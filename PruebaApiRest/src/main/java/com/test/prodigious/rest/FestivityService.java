@@ -6,6 +6,7 @@
 package com.test.prodigious.rest;
 
 import com.test.prodigious.rest.model.Festivity;
+import com.test.prodigious.util.Database;
 import java.util.Calendar;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -41,17 +42,29 @@ public class FestivityService {
     @POST
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces(MediaType.TEXT_PLAIN)
-    public String createCustomer(Festivity object) {
-        System.out.println("object: "+object);
-        return "OK CREATE";
+    public Response createCustomer(Festivity object) {
+        String returnMessage = "Create Successfully";
+        int statusCode = 200;
+        if(!Database.save(object)){
+            returnMessage = "Error happen in a layer below the REST API layer";
+            statusCode = 500;
+        }        
+        
+        return Response.status(statusCode).entity(returnMessage).build();
     }
     
     
     @PUT
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces(MediaType.TEXT_PLAIN)
-    public String updateCustomer(Festivity object) {
-        System.out.println("object: "+object);
-        return "OK UPDATE";
+    public Response updateCustomer(Festivity object) {
+        String returnMessage = "Update Successfully";
+        int statusCode = 200;
+        if(!Database.update(object)){
+            returnMessage = "Error happen in a layer below the REST API layer";
+            statusCode = 500;
+        }        
+        
+        return Response.status(statusCode).entity(returnMessage).build();
     }
 }

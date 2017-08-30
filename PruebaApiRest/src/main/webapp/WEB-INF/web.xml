@@ -9,6 +9,9 @@
             30
         </session-timeout>
     </session-config>
+    <listener>  
+        <listener-class>com.test.prodigious.listener.HibernateListener</listener-class>  
+    </listener>
     <servlet>
         <servlet-name>CXFServlet</servlet-name>
         <servlet-class>
