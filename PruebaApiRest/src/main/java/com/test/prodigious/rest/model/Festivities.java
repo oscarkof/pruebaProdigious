@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.test.prodigious.rest.model;
 
 import java.util.List;
@@ -12,8 +7,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author osmar
+ * A representative class of all Festivity nodes that exist in the XML file
+ * @author Oscar Martinez
  */
 @XmlRootElement(name="festivities")
 @XmlAccessorType(XmlAccessType.FIELD)

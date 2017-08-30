@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.test.prodigious.util;
 
 import com.test.prodigious.rest.model.Festivities;
@@ -14,10 +9,16 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
 /**
- *
- * @author osmar
+ * Class responsible for reading the XML file and loading it into the database
+ * @author Oscar Martinez
  */
 public class ReadResource {
+    
+    public static String formatDate;
+    
+    /**
+     * Method in charge of persisting all the XML information in the database   
+     */
     public static void loadExternalFestivities(){
         try {
             System.out.println("Begin load XML");
@@ -30,6 +31,7 @@ public class ReadResource {
             prop.load(input);
             
             File file = new File(prop.getProperty("file.xml.location"));
+            formatDate = prop.getProperty("dateformat");
             JAXBContext jaxbContext = JAXBContext.newInstance(Festivities.class);
 
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
