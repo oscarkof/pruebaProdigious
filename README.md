@@ -145,6 +145,74 @@ or in XML format
     </festivity>
 </festivities>
 ```
-        
+- POST Method: is used to insert new festivities to the database, for this method is necesary send in the body the XML format entity with the information to store
+     Example:
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<festivity>
+    <name>Sophie's Event</name>
+    <start>2017-08-30T14:00:00.231-05:00</start>
+    <end>2017-08-31T13:00:00.231-05:00</end>
+    <place>CHIA</place>
+</festivity>
+```
+   The Answer for this post can be one of these:
+      - Status code: **200** and message **Created sucessfully**
+      - Status code: **400** and message **Missing Data**
+      - Status code: **400** and message **Dates are not consistent**
+      - Status code: **500** and message **Error happen in a layer below the REST API layer - Insert**
    
-   
+- PUT Method: Is used to update some information in the database from an entity shown in XML or JSON, is like the POST operation with the porpuse to update information.
+     Example:
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<festivity>
+    <name>Sophie's Event</name>
+    <start>2017-08-30T14:00:00.231-05:00</start>
+    <end>2017-08-31T13:00:00.231-05:00</end>
+    <place>Saint Row</place>
+</festivity>
+```
+   The Answer for this post can be one of these:
+      - Status code: **200** and message **Created sucessfully**
+      - Status code: **400** and message **Missing Data**
+      - Status code: **400** and message **Dates are not consistent**
+      - Status code: **500** and message **Error happen in a layer below the REST API layer - Insert**
+      
+      
+      
+- i18N: All serve messages are avaliable in two languages, english(default), english and spanish, to use this change of language you can set the header attribute **Accept-Language** with the value **es-CO** or **en-US** depend the situation.
+
+Example:
+
+```json
+{
+    "responseCustom": {
+        "statusCode": 404,
+        "statusMessage": "Data not found"
+    }
+}
+
+{
+    "responseCustom": {
+        "statusCode": 404,
+        "statusMessage": "No se encontraron datos"
+    }
+}
+```
+
+in XML Format
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<responseCustom>
+    <statusCode>404</statusCode>
+    <statusMessage>No se encontraron datos</statusMessage>
+</responseCustom>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<responseCustom>
+    <statusCode>404</statusCode>
+    <statusMessage>Data not found</statusMessage>
+</responseCustom>
+```
