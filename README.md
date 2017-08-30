@@ -16,13 +16,21 @@ Steps to configure the environment
    - Download the Derby embebbed database from https://db.apache.org/derby/derby_downloads.html 
    - Startup the database service for schema APP
    - create the table Festivities from SQL code in resources folder https://github.com/oscarkof/pruebaProdigious/blob/master/PruebaApiRest/resources/createFestivityTable.sql
-   
-2. Setup the configuration files 
+
+2. Install the Apache Tomcat from https://tomcat.apache.org/download-80.cgi
+
+3. Mount the war generated with this project place it in webapps folder
+
+4. start service tomcat
+
+5. Setup the configuration files 
    - Modify the festivities.properties https://github.com/oscarkof/pruebaProdigious/blob/master/PruebaApiRest/src/main/resources/festivities.properties to set the file with the initial XML Data to be load in the database and the dateformat to query in the GET operations
    - Modify the hibernate.cfg.xml https://github.com/oscarkof/pruebaProdigious/blob/master/PruebaApiRest/src/main/resources/hibernate.cfg.xml to set up the database connection and properties
+
+6. Restart service tomcat
+
    
-   
-How to consume the service festivity 
+# How to consume the service festivity 
 
   - this services has four operations that respont to the HTTP methods (GET, POST, PUT)
     - GET:  to retreive information from database you can use this url http://localhost:8080/PruebaApiRest/service/festivity this url show all festivities that are stored in the database
